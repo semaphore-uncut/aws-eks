@@ -1,29 +1,23 @@
 version: v1.0
-name: DigitalOcean Example
+name: Build image
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 
 blocks:
-  - name: Deploy
+  - name: Build
     task:
       secrets:
-        - name: uncut13-dok8s
         - name: uncut13-dockerhub
-      env_vars:
-        - name: KUBECONFIG
-          value: /home/semaphore/.kube/uncut13.yml
       jobs:
       - name: Docker build
         commands:
           - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
           - checkout
-          - kubectl get nodes
-          - kubectl get pods
           - docker build . -t uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
           - docker push uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
-          - cat nginx.yml
-          - envsubst < nginx.yml | tee nginx.yml
-          - cat nginx.yml
-          - kubectl apply -f nginx.yml
+
+promotions:
+  - name: Deploy to DO k8s
+    pipeline_file: deploy.yml

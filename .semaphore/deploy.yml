@@ -1,0 +1,23 @@
+version: v1.0
+name: Deploy
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Deploy
+    task:
+      secrets:
+        - name: uncut13-dok8s
+      env_vars:
+        - name: KUBECONFIG
+          value: /home/semaphore/.kube/uncut13.yml
+      jobs:
+      - name: Docker build
+        commands:
+          - checkout
+          - kubectl get nodes
+          - kubectl get pods
+          - envsubst < nginx.yml | tee nginx.yml
+          - kubectl apply -f nginx.yml
