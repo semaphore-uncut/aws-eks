@@ -9,7 +9,7 @@ blocks:
   - name: Deploy
     task:
       secrets:
-        - name: uncut18-dok8s
+        - name: uncut13-dok8s
       env_vars:
         - name: KUBECONFIG
           value: /home/semaphore/.kube/uncut13.yml
