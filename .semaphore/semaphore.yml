@@ -19,3 +19,4 @@ blocks:
           - checkout
           - kubectl get nodes
           - kubectl get pods
+          - kubectl apply -f nginx.yml
