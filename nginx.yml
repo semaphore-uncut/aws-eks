@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: library/nginx
+          image: uncut/nginx-uncut13
 
 ---
 
