@@ -8,7 +8,14 @@ agent:
 blocks:
   - name: Deploy
     task:
+      secrets:
+        - name: uncut18-dok8s
+      env_vars:
+        - name: KUBECONFIG
+          value: /home/semaphore/.kube/uncut13.yml
       jobs:
       - name: Docker build
         commands:
           - checkout
+          - kubectl get nodes
+          - kubectl get pods
