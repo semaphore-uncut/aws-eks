@@ -17,6 +17,7 @@ blocks:
       jobs:
       - name: Docker build
         commands:
+          - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
           - checkout
           - kubectl get nodes
           - kubectl get pods
