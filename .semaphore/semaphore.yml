@@ -21,4 +21,6 @@ blocks:
           - checkout
           - kubectl get nodes
           - kubectl get pods
+          - docker build . -t uncut/nginx-uncut13
+          - docker push uncut/nginx-uncut13
           - kubectl apply -f nginx.yml
