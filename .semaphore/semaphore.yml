@@ -21,6 +21,9 @@ blocks:
           - checkout
           - kubectl get nodes
           - kubectl get pods
-          - docker build . -t uncut/nginx-uncut13
-          - docker push uncut/nginx-uncut13
+          - docker build . -t uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
+          - docker push uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
+          - cat nginx.yml
+          - envsubst < nginx.yml | tee nginx.yml
+          - cat nginx.yml
           - kubectl apply -f nginx.yml

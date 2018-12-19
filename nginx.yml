@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: uncut/nginx-uncut13
+          image: uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
 
 ---
 
