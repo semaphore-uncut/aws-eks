@@ -14,20 +14,15 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
+          image: gcr.io/modular-source-228811/uncut-nginx1:$SEMAPHORE_WORKFLOW_ID
 
 ---
 
-apiVersion: v1
-kind: Service
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
-  name: nginx-example-lb
+  name: basic-ingress
 spec:
-  selector:
-    app: nginx-deployment-example
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      name: http
+  backend:
+    serviceName: nginx-deployment-example
+    servicePort: 80
