@@ -15,4 +15,7 @@ blocks:
         commands:
           - ls -lah
           - checkout
+          - gcloud auth activate-service-account uncut14@modular-source-228811.iam.gserviceaccount.com --key-file ~/gke.json
+          - gcloud --quiet auth configure-docker
           - docker build . -t gcr.io/modular-source-228811/uncut14
+          - docker push gcr.io/modular-source-228811/uncut14
