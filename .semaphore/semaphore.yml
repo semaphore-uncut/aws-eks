@@ -17,8 +17,9 @@ blocks:
           - gcloud auth activate-service-account semaphore-uncut1@modular-source-228811.iam.gserviceaccount.com --key-file ~/gcloud-creds.json
           - gcloud --quiet auth configure-docker
           - checkout --use-cache
-          - docker build . -t uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
+          - docker build . -t gcr.io/modular-source-228811/uncut-nginx1:$SEMAPHORE_WORKFLOW_ID
+          - docker push gcr.io/modular-source-228811/uncut-nginx1:$SEMAPHORE_WORKFLOW_ID
 
 promotions:
-  - name: Deploy to DO k8s
+  - name: Deploy to GKE
     pipeline_file: deploy.yml
