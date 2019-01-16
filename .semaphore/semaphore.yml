@@ -8,15 +8,11 @@ agent:
 blocks:
   - name: Build
     task:
-      secrets:
-        - name: uncut13-dockerhub
       jobs:
       - name: Docker build
         commands:
-          - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
           - checkout
           - docker build . -t uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
-          - docker push uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
 
 promotions:
   - name: Deploy to DO k8s
