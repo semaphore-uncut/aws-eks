@@ -11,7 +11,7 @@ blocks:
       jobs:
       - name: Docker build
         commands:
-          - checkout
+          - checkout --use-cache
           - kubectl get nodes
           - kubectl get pods
           - envsubst < nginx.yml | tee nginx.yml
