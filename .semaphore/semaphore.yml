@@ -8,8 +8,11 @@ agent:
 blocks:
   - name: Build
     task:
+      secrets:
+        - name: uncut14
       jobs:
       - name: Docker build
         commands:
+          - ls -lah
           - checkout
           - docker build . -t gcr.io/modular-source-228811/uncut14
