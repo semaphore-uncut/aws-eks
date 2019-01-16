@@ -9,7 +9,7 @@ blocks:
   - name: Build
     task:
       secrets:
-        - name: gke-uncut1
+        - name: gke-uncut2
       jobs:
       - name: Docker build
         commands:
