@@ -19,4 +19,5 @@ blocks:
           - gcloud container clusters get-credentials uncut14 --zone us-central1-a
           - kubectl get pods
           - kubectl get pods --all-namespaces
+          - envsubst < nginx.yml | tee nginx.yml
           - kubectl apply -f nginx.yml

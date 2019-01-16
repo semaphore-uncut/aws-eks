@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: gcr.io/modular-source-228811/uncut14:latest
+          image: gcr.io/modular-source-228811/uncut14:$SEMAPHORE_WORKFLOW_ID
 
 ---
 
