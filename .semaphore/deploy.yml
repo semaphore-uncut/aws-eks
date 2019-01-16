@@ -16,7 +16,7 @@ blocks:
           - checkout --use-cache
           - gcloud auth activate-service-account semaphore-uncut1@modular-source-228811.iam.gserviceaccount.com --key-file ~/gcloud-creds.json
           - gcloud config set project modular-source-228811
-	        - gcloud container clusters get-credentials modular-source-228811 --zone us-central1-a
+          - gcloud container clusters get-credentials uncut-test1 --zone us-central1-a
           - kubectl get nodes
           - kubectl get pods
           - envsubst < nginx.yml | tee nginx.yml
