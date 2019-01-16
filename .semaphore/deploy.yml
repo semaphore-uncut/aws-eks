@@ -14,7 +14,7 @@ blocks:
       - name: Docker build
         commands:
           - checkout --use-cache
-          - gcloud auth activate-service-account semaphore-uncut1@modular-source-228811.iam.gserviceaccount.com --key-file ~/gcloud-creds.json
+          - gcloud auth activate-service-account semaphore-uncut2@modular-source-228811.iam.gserviceaccount.com --key-file ~/gcloud-creds.json
           - gcloud config set project modular-source-228811
           - gcloud container clusters get-credentials uncut-test1 --zone us-central1-a
           - kubectl get nodes
