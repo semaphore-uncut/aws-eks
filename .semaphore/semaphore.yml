@@ -8,9 +8,12 @@ agent:
 blocks:
   - name: Build
     task:
+      secrets:
+        - name: gke-uncut1
       jobs:
       - name: Docker build
         commands:
+          - ls -lah
           - checkout --use-cache
           - docker build . -t uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
 
