@@ -14,6 +14,8 @@ blocks:
       - name: Docker build
         commands:
           - ls -lah
+          - gcloud auth activate-service-account semaphore-uncut1@modular-source-228811.iam.gserviceaccount.com --key-file ~/gcloud-creds.json
+          - gcloud --quiet auth configure-docker
           - checkout --use-cache
           - docker build . -t uncut/nginx-uncut13:$SEMAPHORE_WORKFLOW_ID
 
