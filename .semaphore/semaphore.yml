@@ -8,8 +8,17 @@ agent:
 blocks:
   - name: "Build"
     task:
+      secrets:
+        - name: aws-eks
+      env_vars:
+        - name: AWS_DEFAULT_REGION
+          value: us-east-1
+        - name: ECR_REGISTRY
+          value: "128019459536.dkr.ecr.us-east-1.amazonaws.com/aws-eks"
       jobs:
       - name: Docker build
         commands:
           - checkout
-          - docker build . -t uncut/nginx1
+          - aws ecr get-login --no-include-email | bash
+          - docker build . -t "${ECR_REGISTRY}"
+          - docker push "${ECR_REGISTRY}"
