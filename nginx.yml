@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: 128019459536.dkr.ecr.us-east-1.amazonaws.com/aws-eks
+          image: 128019459536.dkr.ecr.us-east-1.amazonaws.com/aws-eks:$SEMAPHORE_WORKFLOW_ID
 
 ---
 

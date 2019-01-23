@@ -26,4 +26,5 @@ blocks:
           - mkdir ~/bin
           - mv ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
           - kubectl get nodes
+          - envsubst < nginx.yml | tee nginx.yml
           - kubectl apply -f nginx.yml
